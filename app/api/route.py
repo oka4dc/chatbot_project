@@ -1,6 +1,6 @@
 # app/api/routes.py
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from api.schema import ChatRequest
 import openai
 import os
 
@@ -10,9 +10,6 @@ router = APIRouter()
 # Load OpenAI API key from environment variable
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# Define request model
-class ChatRequest(BaseModel):
-    message: str
 
 # Chatbot route
 @router.post("/chat")
